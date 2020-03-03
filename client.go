@@ -25,9 +25,9 @@ func (c *Client) Connect(url string) error {
 		return errors.New("transport not provided")
 	}
 
-	mr := newMessageRouter()
+	c.mr = newMessageRouter()
 
-	return c.t.Connect(url, mr, c.cr)
+	return c.t.Connect(url, c.mr, c.cr)
 }
 
 // Close closes the connection via the transport.
